@@ -1,0 +1,41 @@
+\DeclareCaptionFont{white}{\color{white}}
+\DeclareCaptionFormat{listing}{
+	\colorbox{sbase00}{
+		\parbox{\textwidth}{#1#2#3}
+	}
+}
+\captionsetup[lstlisting]{
+	format=listing,
+	labelfont=white,
+	textfont=white,
+	margin=0pt,
+	skip=-0.35mm
+}
+% Para tener listings bonitos.
+\lstset{
+	basicstyle=\fontsize{9}{11}\color{sbase00}\ttfamily, % Tipografía
+	%numbers=left,               % Posición del número de línea.
+	numberstyle=\tiny,          % Tamaño del número de línea.
+	%stepnumber=2,               % Saltos entre números de línea.
+	numbersep=5pt,              % Tamaño del número de línea.
+	tabsize=4,                  % Anchura de las tabulaciones.
+	extendedchars=true,         %
+	breaklines=false,           % Romper líneas automáticamente.
+	% Colores.
+	%backgroundcolor=\color{sbase3},
+    keywordstyle=\color{sred},
+    commentstyle=\color{sbase1},
+    stringstyle=\color{sblue}\ttfamily,
+    numberstyle=\color{sviolet},
+    identifierstyle=\color{sbase00},
+    %--------
+	frame=b,                    % Borde inferior.
+	showspaces=false,           % No resaltar espacios.
+	showtabs=false,             % No resaltar tabs.
+	xleftmargin=6.75mm,         % Ajusta el margen izquierdo.
+	xrightmargin=-3.5mm,        % Ajusta el margen derecho.
+	framexleftmargin=17pt,      % Ajusta el relleno izquierdo.
+	framexrightmargin=5pt,      % Relleno derecho.
+	framexbottommargin=4pt,     % Relleno inferior.
+	showstringspaces=false      % Resaltar espacios.
+}

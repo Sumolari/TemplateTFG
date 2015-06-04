@@ -1,0 +1,21 @@
+\newlength\myframesep
+\setlength\myframesep{8pt}
+
+\pgfdeclarelayer{background}
+\pgfsetlayers{background,main}
+
+\pgfkeys{
+    /tikz/node distance/.append code={
+        \pgfkeyssetvalue{/tikz/node distance value}{#1}
+    }
+}
+
+\newcommand\widernode[5][blueb]{
+\node[
+        #1,
+        inner sep=0pt,
+        shift=($(#2.south)-(#2.north)$),
+        yshift=-\pgfkeysvalueof{/tikz/node distance value},
+        fit={(#2) (#3)},
+        label=center:{\sffamily\bfseries\color{white}#4}] (#5) {};
+}

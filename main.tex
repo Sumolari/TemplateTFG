@@ -1,0 +1,230 @@
+% Queremos un artículo.
+
+% -------------------------------------------------------------------
+% Comienzo del preámbulo e inclusión de paquetes.
+% El tipo de documento es "libro".
+% El tamaño de letra se puede cambiar a 11pt.
+% -------------------------------------------------------------------
+
+\documentclass[a4paper,12pt,twoside]{book}
+
+% -------------------------------------------------------------------
+% Información del TFG: título, alumno, tutor.
+% -------------------------------------------------------------------
+
+\newcommand{\titulo}{Escritura del TFG:\\[0.2cm] una plantilla \LaTeX}
+\newcommand{\tituloPlano}{Escritura del TFG: una plantilla \LaTeX}
+
+\newcommand{\titulacion}{Grado en Ingeniería Informática}
+\newcommand{\autor}{Nombre del autor}
+\newcommand{\director}{Nombre del tutor}
+
+\title{\titulo}
+\author{\autor}
+
+% -------------------------------------------------------------------
+% Paquetes.
+% -------------------------------------------------------------------
+
+% Carga de paquetes.
+\input{headers/packages}
+% Solarized colors.
+\input{headers/solarized}
+% Para tener listings con caption bonito.
+\input{headers/better_listings}
+% Para diagramas de caja.
+\input{headers/box_diagrams}
+% Para tener el fondo preparado para la portada.
+\input{headers/frontpage}
+
+% Para evitar líneas huérfanas y viudas.
+\clubpenalty=10000
+\widowpenalty=10000
+
+% Operadores matemáticos útiles.
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+% Para mostrar el año pasado.
+\newcommand\LastYear{\advance\year by -1 \the\year\advance\year by 1}
+
+% Separación entre párrafos.
+\setlength{\parskip}{1em}
+
+% -------------------------------------------------------------------
+% Estilo personalizado para las cabeceras y pies de página.
+% -------------------------------------------------------------------
+\input{headers/headers}
+
+% -------------------------------------------------------------------
+% Glosario.
+% -------------------------------------------------------------------
+\usepackage[toc]{glossaries}
+\makeglossaries
+\usepackage[xindy]{imakeidx}
+\makeindex
+\input{headers/glossary}
+
+% -------------------------------------------------------------------
+% Documento.
+% -------------------------------------------------------------------
+\begin{document}
+% -------------------------------------------------------------------
+
+% -------------------------------------------------------------------
+% Portada.
+% -------------------------------------------------------------------
+\include{frontpage/portada}
+
+% -------------------------------------------------------------------
+% Reverso de la portada.
+% -------------------------------------------------------------------
+\newpage
+\thispagestyle{empty}
+\phantom{Reverso de la portada}
+
+% -------------------------------------------------------------------
+% Agradecimientos.
+% -------------------------------------------------------------------
+%\include{frontpage/thanks}
+
+% -------------------------------------------------------------------
+% Reverso de los agradecimientos.
+% -------------------------------------------------------------------
+%\newpage
+%\thispagestyle{empty}
+%\phantom{Reverso de los agradecimientos}
+
+% -------------------------------------------------------------------
+% Resumen.
+% -------------------------------------------------------------------
+\newpage
+\thispagestyle{empty}
+\include{resumen}
+
+% -------------------------------------------------------------------
+% Reverso del resumen (incluir solo si es necesario).
+% -------------------------------------------------------------------
+\newpage
+\thispagestyle{empty}
+\phantom{Reverso del resumen}
+
+% -------------------------------------------------------------------
+% Se escoge la lengua en que se escribe el documento.
+% -------------------------------------------------------------------
+\selectlanguage{spanish}
+
+% -------------------------------------------------------------------
+% Índice general.
+% -------------------------------------------------------------------
+\newpage
+\pagenumbering{roman}
+\renewcommand{\contentsname}{Índice general\\ \vspace*{0.3cm}\hrule\vspace*{-2cm}}
+\setcounter{tocdepth}{1}
+\tableofcontents
+
+% -------------------------------------------------------------------
+% Reverso del índice de contenidos (incluir solo si es necesario).
+% -------------------------------------------------------------------
+\newpage
+\thispagestyle{empty}
+\phantom{Reverso del índice de contenidos}
+
+% -------------------------------------------------------------------
+% Índice de figuras.
+% -------------------------------------------------------------------
+\newpage
+\pagenumbering{roman}
+\renewcommand{\listfigurename}{Índice de figuras\\ \vspace*{0.3cm}\hrule\vspace*{-0.3cm}}
+\listoffigures
+
+% -------------------------------------------------------------------
+% Reverso de la lista de figuras (incluir solo si es necesario).
+% -------------------------------------------------------------------
+\newpage
+\thispagestyle{empty}
+\phantom{Reverso de la lista de figuras}
+
+% -------------------------------------------------------------------
+% Lista de tablas.
+% -------------------------------------------------------------------
+\newpage
+\pagenumbering{roman}
+\renewcommand{\listtablename}{Índice de tablas\\ \vspace*{0.3cm}\hrule\vspace*{-0.3cm}}
+\listoftables
+
+% -------------------------------------------------------------------
+% Reverso de la lista de tablas (incluir solo si es necesario).
+% -------------------------------------------------------------------
+\newpage
+\thispagestyle{empty}
+\phantom{Reverso de la lista de tablas}
+
+% -------------------------------------------------------------------
+% Lista de algoritmos.
+% -------------------------------------------------------------------
+\newpage
+\pagenumbering{roman}
+\renewcommand*{\listalgorithmcfname}{Índice de algoritmos\\ \vspace*{0.3cm}\hrule\vspace*{-0.3cm}}
+\listofalgorithms
+\addtocontents{loa}{\def\string\figurename{Algorithm}}
+
+% -------------------------------------------------------------------
+% Reverso de la lista de algoritmos (incluir solo si es necesario).
+% -------------------------------------------------------------------
+\newpage
+\thispagestyle{empty}
+\phantom{Reverso de la lista de algoritmos}
+
+% -------------------------------------------------------------------
+% Definición de la parte principal del documento.
+% -------------------------------------------------------------------
+\mainmatter
+\makeatletter
+\renewcommand{\ps@plain}{\ps@fancy}
+\def\@makechapterhead#1{%
+	\vspace*{50\p@}%
+		{\parindent \z@ \raggedright \normalfont
+		\interlinepenalty\@M
+		\begin{flushright}
+    		\Huge \bfseries \thechapter.~#1\\ \vspace*{0.6cm}\hrule\vspace*{-0.6cm}
+		\end{flushright}
+		\vskip 40\p@
+	}
+}
+\makeatother
+\pagestyle{fancy}
+
+% -------------------------------------------------------------------
+% A partir de aquí comienzan los capítulos.
+% -------------------------------------------------------------------
+
+% Introducción.
+\include{ejemplo}
+
+% -------------------------------------------------------------------
+% Mostrar glosario.
+% -------------------------------------------------------------------
+\appendix
+\newpage
+\pagenumbering{roman}
+\glsaddall
+\printindex
+\printglossary[toctitle=Glosario,title=Glosario\\ \vspace*{0.3cm}\hrule\vspace*{-2.3cm}]
+
+% -------------------------------------------------------------------
+% Mostrar bibliografía.
+% -------------------------------------------------------------------
+\appendix
+\newpage
+\input{bibliography}
+
+% -------------------------------------------------------------------
+% Mostrar anexos.
+% -------------------------------------------------------------------
+
+\newpage
+\input{attachment}
+
+% -------------------------------------------------------------------
+\end{document}

@@ -1,0 +1,65 @@
+% Para poder escribir acentos.
+\usepackage{fontspec}
+% Sistema babel para escritura en castellano, catalán e inglés.
+% La opción es-tabla sustituye el rótulo Cuadro por Tabla.
+\usepackage[english,catalan,spanish,es-tabla]{babel}
+% Para que el índice tenga links.
+\usepackage{hyperref}
+% Para poder poner URLs y links.
+\usepackage{url}
+% Para manejar más cómodamente la geometría de la página.
+\usepackage[a4paper]{geometry}
+% Tipo de papel y márgenes (tamaño A4).
+\usepackage{anysize}
+\papersize{29.7cm}{21cm}
+\marginsize{3cm}{3cm}{2.35cm}{2.35cm}
+% Para colocar imágenes flotantes.
+\usepackage{wrapfig}
+% Para poder tener subfiguras y para tener listings con caption bonito.
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+% Para tener cabeceras y pies de página personalizados.
+\usepackage{fancyhdr}
+% Para dibujar grafos.
+\usepackage{tikz}
+% Librerías de Tikz para trabajar más cómodamente con grafos.
+\usetikzlibrary{arrows,shapes,snakes,automata,backgrounds,petri,positioning,calc,fit}
+% Para poder dibujar gráficas.
+\usepackage{pgfplots}
+% Para tener múltiples columnas.
+\usepackage{multicol}
+% Para poder usar mathbb, esto es, poner símbolos como el de números naturales.
+\usepackage{amsfonts}
+% Para poder usar matrices.
+\usepackage{amsmath}
+% Para usar separador decimal de coma.
+\usepackage{icomma}
+% Para poder insertar código.
+\usepackage{listings}
+% Para poner prefijos en las enumeraciones.
+\usepackage{enumitem}
+% Para poder usar una imagen como fondo de una página.
+\usepackage[pages=some]{background}
+% Para que las secciones estén alineadas a la derecha.
+\usepackage[raggedright]{titlesec}
+% Para tener tablas que ocupen múltiples páginas.
+\usepackage{longtable}
+% Para poder poner pseudocódigo.
+\usepackage[spanish,onelanguage]{algorithm2e}
+% Para poner el título de algoritmos correctamente.
+\usepackage{xpatch}
+% Para tener apéndices.
+\usepackage[toc,page]{appendix}
+% Para poder poner el símbolo del euro.
+\usepackage{eurosym}
+% Para poder tener verbatim con borde.
+\usepackage{fancyvrb}
+% Para dibujar árboles de gramáticas.
+\usepackage{qtree}
+% Para poner Lorem Ipsum.
+\usepackage{lipsum}
+
+\newenvironment{Figure}
+  {\par\medskip\noindent\minipage{\linewidth}}
+  {\endminipage\par\medskip}
